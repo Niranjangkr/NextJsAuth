@@ -2,6 +2,7 @@ import { connect } from "@/dbConfig/dbConfig"
 import User from "@/models/UserModel"
 import { NextRequest, NextResponse } from "next/server";
 import  bcryptjs from 'bcryptjs'
+import { sendEmail } from "@/helpers/mailer";
  
 connect();
 
@@ -32,6 +33,12 @@ export async function POST(request: NextRequest){
         });
         
         const savedUser = await newUser.save();
+
+        // you can also make a separate page from frontend for verify email and from there you can send the verify email
+        // verification email
+        console.log("sendemailahesad");
+        await  sendEmail({email, emailType: "VERIFY", userId: savedUser._id});
+
         return NextResponse.json({
             message: "New User created Successfully",
             success: true,
