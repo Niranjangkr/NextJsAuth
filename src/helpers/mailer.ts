@@ -32,14 +32,14 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
             from: 'Niranjan@gmail.com',
             to: email,
             subject: emailType ===  "VERIFY"? "Verify Your Email": "Reset Your Password",
-            html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType ==="VERIFY"?"Verify your email":"Reset Your Password"}
-            or copy and paste the link in the browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken} 
+            html: `<p>Click <a href="${process.env.DOMAIN}/${emailType ===  "VERIFY"?"verifyemail":"resetpassword"}?token=${hashedToken}">here</a> to ${emailType ==="VERIFY"?"Verify your email":"Reset Your Password"}
+            or copy and paste the link in the browser. <br> ${process.env.DOMAIN}/${emailType ===  "VERIFY"?"verifyemail":"resetpassword"}?token=${hashedToken} 
             </p>`
         }
         console.log("sending ahead")
         const mailresponse = await transport.sendMail(mailOptions);
         return mailresponse;
     } catch (error: any) {
-        throw new Error(error.message)
+        throw new Error(error.messagae)
     }
 }

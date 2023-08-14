@@ -9,4 +9,4 @@ export function getDataFromToken(request: NextRequest) {
     } catch (error: any) {
         throw new Error(error.message);
     }
-} 
+}

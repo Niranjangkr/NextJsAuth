@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
             // check if the password is correct 
             const validPassword = await bcryptjs.compare(password, user.password);
             if(!validPassword){
-                return NextResponse.json({error: "password is not valid"}, {status: 400});
+                return NextResponse.json({message: "password is not valid"}, {status: 400});
             }
 
             // create token data 
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
             return response;
         }else{
-            return NextResponse.json({error: "User does not exists in the database"}, {status: 400});   
+            return NextResponse.json({message: "User does not exists"}, {status: 400});   
         }
 
     } catch (error) {
