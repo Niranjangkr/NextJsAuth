@@ -24,7 +24,9 @@ export default function Verifyemail(){
         const urlToken = window.location.search.split('=')[1];
         setToken(urlToken || "");
     }, [])
+
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         if(token.length > 0){
             verifyEmail();
         }
