@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { error } from 'console';
 
 
-export default function() {
+export default function Verifyemail(){
     const [ token, setToken ] = useState("");
     const [ Error, setError ] = useState(false);
     const [ verified, setVerified ] = useState(false);
